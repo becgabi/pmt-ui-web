@@ -1,0 +1,93 @@
+partners:
+  get:
+    summary: Get all partners
+    operationId: getAll
+    responses:
+      '200':
+        description: Operation successful
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '../masterdata/partner-model.yaml#/components/schemas/Partner'
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+    tags:
+      - partner
+  post:
+    summary: Create new partner
+    operationId: create
+    requestBody:
+      description: Partner
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../masterdata/partner-model.yaml#/components/schemas/Partner'
+    responses:
+      '201':
+        description: Success
+        content:
+          application/json:
+            schema:
+              $ref: '../common/common.yaml#/components/schemas/IdentifierResponse'
+      '400': { $ref: '../common/response.yaml#/components/responses/BadRequest' }
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+      '422': { $ref: '../common/response.yaml#/components/responses/Unprocessable' }
+    tags:
+      - partner
+
+partner:
+  get:
+    parameters:
+      - $ref: '../common/common.yaml#/components/parameters/idPathParam'
+    summary: Get a single partner
+    operationId: getOne
+    responses:
+      '200':
+        description: Operation successful
+        content:
+          application/json:
+            schema:
+              $ref: '../masterdata/partner-model.yaml#/components/schemas/Partner'
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+      '404': { $ref: '../common/response.yaml#/components/responses/NotFound' }
+    tags:
+      - partner
+  put:
+    parameters:
+      - $ref: '../common/common.yaml#/components/parameters/idPathParam'
+    summary: Update a partner
+    operationId: update
+    requestBody:
+      description: Partner
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../masterdata/partner-model.yaml#/components/schemas/Partner'
+    responses:
+      '200':
+        description: Operation successful
+      '400': { $ref: '../common/response.yaml#/components/responses/BadRequest' }
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+      '422': { $ref: '../common/response.yaml#/components/responses/Unprocessable' }
+    tags:
+      - partner
+  delete:
+    parameters:
+      - $ref: '../common/common.yaml#/components/parameters/idPathParam'
+    summary: Delete a partner
+    operationId: delete
+    responses:
+      '204':
+        description: Operation successful
+      '400': { $ref: '../common/response.yaml#/components/responses/BadRequest' }
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+    tags:
+      - partner

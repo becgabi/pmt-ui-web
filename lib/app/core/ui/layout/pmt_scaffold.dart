@@ -1,5 +1,5 @@
 import 'package:fbase_auth_test/app/config/config.dart';
-import 'package:fbase_auth_test/app/config/responsive.dart';
+import 'package:fbase_auth_test/app/core/ui/layout/responsive.dart';
 import 'package:fbase_auth_test/app/core/ui/layout/header.dart';
 import 'package:fbase_auth_test/app/core/ui/layout/side_menu.dart';
 import 'package:fbase_auth_test/app/menu/menu_bloc.dart';

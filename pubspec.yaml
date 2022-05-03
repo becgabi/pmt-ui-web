@@ -42,6 +42,14 @@ dependencies:
   # State management
   flutter_bloc: ^8.0.1
 
+  # OpenApi dependency
+  openapi_generator_annotations: ^3.3.0
+
+  # The generated code as a dependency
+  # The name 'backend_api' comes from openapi_generator_config.dart (GeneratorConfig > AdditionalProperties > pubName')
+  backend_api:
+    path: generated/backend_api
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -55,6 +63,7 @@ dev_dependencies:
 
   ## OpenApi code generator dependencies
   build_runner: any
+  openapi_generator: ^3.3.0
 
 
 # For information on the generic Dart part of this file, see the

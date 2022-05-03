@@ -1,0 +1,112 @@
+openapi: "3.0.3"
+info:
+  title: API Responses
+  description: API Responses
+  version: '1.0'
+paths:
+
+components:
+
+  schemas:
+    DefaultProblem:
+      type: object
+      title: Default Problem Object
+      properties:
+        type:
+          type: string
+          format: uri
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string
+          format: uri
+
+    ValidationProblem:
+      type: object
+      title: Validation Problem Object
+      properties:
+        type:
+          type: string
+          format: uri
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string
+          format: uri
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/ValidationError'
+
+    ValidationError:
+      type: object
+      title: Validation Error Object
+      properties:
+        code:
+          type: string
+        meta:
+          type: string
+        params:
+          $ref: './base-type.yaml#/components/schemas/StringStringMap'
+
+    ValidationWarning:
+      type: object
+      title: Validation Warning Object
+      properties:
+        code:
+          type: string
+        params:
+          $ref: './base-type.yaml#/components/schemas/StringStringMap'
+
+  responses:
+    Ok:
+      description: OK - the request has succeeded.
+    BadRequest:
+      description: Bad request - e.g. in case of validation errors
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DefaultProblem'
+    Unprocessable:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ValidationProblem'
+    Unauthorized:
+      description: Unauthorized - the client could not be identified.
+      headers:
+        WWW-Authenticate:
+          description: The authentication method that should be used to gain access to a resource
+          schema:
+            type: string
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DefaultProblem'
+    Forbidden:
+      description: Forbidden - the client did not have the required access rights.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DefaultProblem'
+    UnexpectedError:
+      description: Unexpected Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DefaultProblem'
+    NotFound:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DefaultProblem'

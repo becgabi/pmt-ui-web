@@ -1,0 +1,74 @@
+openapi: "3.0.1"
+info:
+  title: Project API Components
+  description: Project API Components
+  version: '1.0'
+paths:
+
+components:
+  schemas:
+    Project:
+      type: object
+      title: Project
+      properties:
+        id:
+          $ref: '../common/base-type.yaml#/components/schemas/Id'
+        partnerId:
+          $ref: '../common/base-type.yaml#/components/schemas/Id'
+        name:
+          $ref: '../common/base-type.yaml#/components/schemas/ShortText'
+        projectStart:
+          $ref: '../common/base-type.yaml#/components/schemas/Date'
+        projectEnd:
+          $ref: '../common/base-type.yaml#/components/schemas/Date'
+        phase:
+          $ref: '#/components/schemas/PhaseType'
+        settlementMode:
+          $ref: '#/components/schemas/SettlementMode'
+        phases:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProjectPhase'
+      required:
+        - name
+        - phase
+        - settlementMode
+        - phases
+
+    ProjectPhase:
+      type: object
+      title: Project phase
+      properties:
+        id:
+          $ref: '../common/base-type.yaml#/components/schemas/Id'
+        phaseType:
+          $ref: '#/components/schemas/PhaseType'
+        name:
+          $ref: '../common/base-type.yaml#/components/schemas/ShortText'
+        description:
+          $ref: '../common/base-type.yaml#/components/schemas/LongText'
+        phaseStart:
+          $ref: '../common/base-type.yaml#/components/schemas/Date'
+        phaseEnd:
+          $ref: '../common/base-type.yaml#/components/schemas/Date'
+        deadline:
+          $ref: '../common/base-type.yaml#/components/schemas/Date'
+      required:
+        - type
+        - name
+
+    PhaseType:
+      type: string
+      title: The phase of the project
+      enum:
+        - IMPLEMENTATION
+        - IMPROVEMENT
+        - SUPPORT
+
+    SettlementMode:
+      type: string
+      title: The settlement mode of the project
+      enum:
+        - T_AND_M
+        - SPRINT_COMMITMENT
+        - PROJECT_BASED

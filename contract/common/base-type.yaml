@@ -1,0 +1,83 @@
+openapi: "3.0.3"
+info:
+  title: Base types
+  description: Base types
+  version: '1.0'
+paths:
+components:
+
+  schemas:
+    # Types for including into objects
+    Id:
+      type: integer
+      format: int64
+      description: ID of object
+    ShortText:
+      type: string
+      minLength: 0
+      maxLength: 50
+    LongText:
+      type: string
+      minLength: 0
+      maxLength: 255
+    Date:
+      type: string
+      format: date
+    DateTime:
+      type: string
+      format: date-time
+    Int:
+      type: integer
+      format: int32
+    Long:
+      type: integer
+      format: int64
+    Double:
+      type: number
+      format: double
+    StringObjectMap:
+      type: object
+      additionalProperties: { }
+    StringStringMap:
+      type: object
+      additionalProperties:
+        type: string
+    List_StringStringMap:
+      type: array
+      items:
+        type: object
+        additionalProperties:
+          type: string
+    List_Map:
+      type: object
+      additionalProperties:
+        type: array
+        items:
+          type: object
+    ListOfValuesDto:
+      type: object
+      properties:
+        code:
+          type: string
+        label:
+          type: string
+    ZonedDateTime:
+      type: object
+      properties:
+        dateTime:
+          $ref: '#/components/schemas/DateTime'
+        zone:
+          type: string
+    Binary:
+      type: string
+      format: binary
+    BinaryObject:
+      type: object
+      properties:
+        file:
+          $ref: '#/components/schemas/Binary'
+    Byte:
+      type: string
+      format: byte
+    Boolean:
+      type: boolean
