@@ -1,0 +1,26 @@
+openapi: "3.0.3"
+info:
+  title: User API Componenets
+  description: User API Componenets
+  version: '1.0'
+paths:
+
+components:
+  schemas:
+
+    Profile:
+      type: object
+      title: Profile
+      properties:
+        id:
+          type: string
+        displayName:
+          type: string
+        email:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        phone:
+          type: string

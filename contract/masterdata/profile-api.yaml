@@ -1,0 +1,16 @@
+profile:
+  get:
+    summary: Get the profile of the authenticated users
+    operationId: findByIdToken
+    responses:
+      '200':
+        description: Operation successful
+        content:
+          application/json:
+            schema:
+              $ref: '../masterdata/profile-model.yaml#/components/schemas/Profile'
+      '401': {$ref: '../common/response.yaml#/components/responses/Unauthorized'}
+      '403': {$ref: '../common/response.yaml#/components/responses/Forbidden'}
+      '404': {$ref: '../common/response.yaml#/components/responses/NotFound'}
+    tags:
+      - profile

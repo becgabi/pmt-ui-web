@@ -1,0 +1,40 @@
+openapi: "3.0.1"
+info:
+  title: Partner API Components
+  description: Partner API Components
+  version: '1.0'
+paths:
+
+components:
+  schemas:
+    Partner:
+      type: object
+      title: Partner
+      properties:
+        id:
+          $ref: '../common/base-type.yaml#/components/schemas/Id'
+        name:
+          $ref: '../common/base-type.yaml#/components/schemas/ShortText'
+        taxNumber:
+          type: string
+          maxLength: 20
+        registrationNumber:
+          type: string
+          maxLength: 20
+        headquarters:
+          $ref: '../common/base-type.yaml#/components/schemas/ShortText'
+        cooperationStart:
+          $ref: '../common/base-type.yaml#/components/schemas/Date'
+        cooperationStatus:
+          $ref: '#/components/schemas/CooperationStatus'
+      required:
+        - name
+
+    CooperationStatus:
+      type: string
+      title: CooperationStatus
+      description: The status of the cooperation with the partner
+      enum:
+        - ACTIVE
+        - INACTIVE
+        - CLOSED

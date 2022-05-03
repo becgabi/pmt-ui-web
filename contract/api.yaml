@@ -1,0 +1,78 @@
+openapi: "3.0.3"
+info:
+  title: Api Documentation
+  description: Api Documentation
+  version: '0.0.1'
+
+servers:
+  - url: http://localhost:9001
+
+  # Apply the security globally to all operations
+security:
+  - bearerAuth: [ ]
+
+paths:
+  #
+  # Profile API (Collected in ProfileApi)
+  # TODO: Deprecated: Csak a POC miatt lett lefejlesztve, ki kell vezetni
+  #
+  '/api/profile':
+    $ref: 'masterdata/profile-api.yaml#/profile'
+
+  #
+  # Colleague API
+  #
+  '/api/colleagues':
+    $ref: 'masterdata/colleague-api.yaml#/colleagues'
+  '/api/colleagues/{id}':
+    $ref: 'masterdata/colleague-api.yaml#/colleague'
+  '/api/colleagues/self':
+    $ref: 'masterdata/colleague-api.yaml#/self'
+
+  #
+  # Partner API
+  #
+  '/api/partners':
+    $ref: 'masterdata/partner-api.yaml#/partners'
+  '/api/partners/{id}':
+    $ref: 'masterdata/partner-api.yaml#/partner'
+
+  #
+  # Project API
+  #
+  '/api/projects':
+    description: Get all projects
+    $ref: 'masterdata/project-api.yaml#/projects'
+  '/api/partners/{id}/projects':
+    description: Get projects of partner, create new project
+    $ref: 'masterdata/project-api.yaml#/partner-projects'
+  '/api/projects/{id}':
+    description: Get / update / delete project by project id
+    $ref: 'masterdata/project-api.yaml#/project'
+  '/api/projects/{id}/phases':
+    description: Get phases of project, create new phase
+    $ref: 'masterdata/project-api.yaml#/phases'
+  '/api/phases/{id}':
+    description: Get / update / delete phase by phase id
+    $ref: 'masterdata/project-api.yaml#/phase'
+
+components:
+  securitySchemes:
+    bearerAuth: # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT    # optional, arbitrary value for documentation purposes
+
+  schemas:
+    Permission:
+      type: string
+      title: Permission
+      enum:
+        - SETTING_VIEW
+        - SETTING_EDIT
+        - COLLEAGUE_VIEW
+        - COLLEAGUE_EDIT
+        - PARTNER_VIEW
+        - PARTNER_EDIT
+        - PROJECT_VIEW
+        - PROJECT_EDIT

@@ -1,0 +1,202 @@
+projects:
+  get:
+    summary: Get all projects
+    operationId: findAll
+    parameters:
+      - $ref: '../common/common.yaml#/components/parameters/fromDateTimeQueryParam'
+      - $ref: '../common/common.yaml#/components/parameters/toDateTimeQueryParam'
+    responses:
+      '200':
+        description: Operation successful
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '../masterdata/project-model.yaml#/components/schemas/Project'
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+    tags:
+      - project
+
+partner-projects:
+  get:
+    summary: Get projects of given partner
+    operationId: findByPartner
+    parameters:
+      - $ref: '../common/common.yaml#/components/parameters/idPathParam'
+    responses:
+      '200':
+        description: Operation successful
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '../masterdata/project-model.yaml#/components/schemas/Project'
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+    tags:
+      - project
+  post:
+    summary: Create new project
+    operationId: create
+    requestBody:
+      description: Project data
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../masterdata/project-model.yaml#/components/schemas/Project'
+    responses:
+      '201':
+        description: Operation successful
+        content:
+          application/json:
+            schema:
+              $ref: '../common/common.yaml#/components/schemas/IdentifierResponse'
+      '400': { $ref: '../common/response.yaml#/components/responses/BadRequest' }
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+      '422': { $ref: '../common/response.yaml#/components/responses/Unprocessable' }
+    tags:
+      - project
+
+project:
+  parameters:
+    - $ref: '../common/common.yaml#/components/parameters/idPathParam'
+  get:
+    summary: Get project by id
+    operationId: findById
+    responses:
+      '200':
+        description: Operation successful
+        content:
+          application/json:
+            schema:
+              $ref: '../masterdata/project-model.yaml#/components/schemas/Project'
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+    tags:
+      - project
+  put:
+    summary: Update project
+    operationId: update
+    requestBody:
+      description: Project data
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../masterdata/project-model.yaml#/components/schemas/Project'
+    responses:
+      '204':
+        description: Operation successful
+      '400': { $ref: '../common/response.yaml#/components/responses/BadRequest' }
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+      '422': { $ref: '../common/response.yaml#/components/responses/Unprocessable' }
+    tags:
+      - project
+  delete:
+    summary: Delete project
+    operationId: delete
+    responses:
+      '204':
+        description: Operation successful
+      '400': { $ref: '../common/response.yaml#/components/responses/BadRequest' }
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+    tags:
+      - project
+
+phases:
+  get:
+    summary: Get project phases of given project
+    operationId: findByProject
+    parameters:
+      - $ref: '../common/common.yaml#/components/parameters/idPathParam'
+    responses:
+      '200':
+        description: Operation successful
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '../masterdata/project-model.yaml#/components/schemas/ProjectPhase'
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+    tags:
+      - project-phase
+  post:
+    summary: Create new project phase
+    operationId: create
+    requestBody:
+      description: Project phase data
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../masterdata/project-model.yaml#/components/schemas/ProjectPhase'
+    responses:
+      '201':
+        description: Operation successful
+        content:
+          application/json:
+            schema:
+              $ref: '../common/common.yaml#/components/schemas/IdentifierResponse'
+      '400': { $ref: '../common/response.yaml#/components/responses/BadRequest' }
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+      '422': { $ref: '../common/response.yaml#/components/responses/Unprocessable' }
+    tags:
+      - project-phase
+
+phase:
+  parameters:
+    - $ref: '../common/common.yaml#/components/parameters/idPathParam'
+  get:
+    summary: Get project phase by id
+    operationId: findById
+    responses:
+      '200':
+        description: Operation successful
+        content:
+          application/json:
+            schema:
+              $ref: '../masterdata/project-model.yaml#/components/schemas/ProjectPhase'
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+    tags:
+      - project-phase
+  put:
+    summary: Update project phase
+    operationId: update
+    requestBody:
+      description: Project phase data
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../masterdata/project-model.yaml#/components/schemas/ProjectPhase'
+    responses:
+      '204':
+        description: Operation successful
+      '400': { $ref: '../common/response.yaml#/components/responses/BadRequest' }
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+      '422': { $ref: '../common/response.yaml#/components/responses/Unprocessable' }
+    tags:
+      - project-phase
+  delete:
+    summary: Delete project phase
+    operationId: delete
+    responses:
+      '204':
+        description: Operation successful
+      '400': { $ref: '../common/response.yaml#/components/responses/BadRequest' }
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+    tags:
+      - project-phase

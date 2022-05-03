@@ -1,0 +1,69 @@
+openapi: "3.0.1"
+info:
+  title: Colleague API Componenets
+  description: Colleague API Components
+  version: '1.0'
+paths:
+
+components:
+
+  schemas:
+
+    Colleague:
+      type: object
+      title: Colleague
+      properties:
+        id:
+          $ref: '../common/base-type.yaml#/components/schemas/Id'
+        uid:
+          type: string
+          maxLength: 255
+          description: Identifier used by firebase
+        ldapId:
+          type: string
+          maxLength: 255
+          description: Identifier used in LDAP
+        name:
+          $ref: '../common/base-type.yaml#/components/schemas/LongText'
+        role:
+          $ref: '#/components/schemas/Role'
+        type:
+          $ref: '#/components/schemas/ColleagueType'
+        status:
+          $ref: '#/components/schemas/ColleagueStatus'
+        email:
+          $ref: '../common/base-type.yaml#/components/schemas/LongText'
+        address:
+          $ref: '../common/base-type.yaml#/components/schemas/LongText'
+        phone:
+          $ref: '../common/base-type.yaml#/components/schemas/ShortText'
+        bankAccountNumber:
+          $ref: '../common/base-type.yaml#/components/schemas/LongText'
+      required:
+        - name
+        - role
+        - type
+        - status
+
+    ColleagueStatus:
+      type: string
+      title: The status of the colleague
+      enum:
+        - ACTIVE
+        - INACTIVE
+        - LEFT
+
+    ColleagueType:
+      type: string
+      title: The type of the colleague
+      enum:
+        - EMPLOYEE
+        - CONTRACTOR
+        - HYBRID
+
+    Role:
+      type: string
+      title: The role of the colleague
+      enum:
+        - DIRECTOR
+        - COLLEAGUE

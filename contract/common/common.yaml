@@ -1,0 +1,99 @@
+openapi: "3.0.3"
+info:
+  title: Common Componenets
+  description: Common Components
+  version: '1.0'
+paths:
+
+components:
+
+  parameters:
+
+    idPathParam:
+      name: id
+      description: Identifier path parameter
+      in: path
+      required: true
+      schema:
+        type: integer
+        format: int64
+
+    idQueryParam:
+      name: id
+      description: Identifier query parameter
+      in: query
+      required: true
+      schema:
+        type: integer
+        format: int64
+
+    languageQueryParam:
+      name: lang
+      description: Language
+      in: query
+      required: false
+      schema:
+        type: string
+        maxLength: 2
+        minLength: 2
+
+    fromDateQueryParam:
+      name: from
+      description: Date from query parameter
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date
+
+    toDateQueryParam:
+      name: to
+      description: Date to query parameter
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date
+
+    fromDateTimeQueryParam:
+      name: from
+      description: Date time from query parameter
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+
+    toDateTimeQueryParam:
+      name: to
+      description: Date time to query parameter
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+
+  schemas:
+
+    IdentifierResponse:
+      type: object
+      title: Identifier response
+      properties:
+        id:
+          $ref: './base-type.yaml#/components/schemas/Id'
+
+    Language: &LANGUAGE
+      type: string
+      enum:
+        - hu
+        - en
+        - ro
+        - de
+      default: en
+
+    Gender:
+      type: string
+      enum:
+        - male
+        - female
+        - other

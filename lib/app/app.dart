@@ -1,5 +1,8 @@
+import 'package:backend_api/backend_api.dart';
+import 'package:dio/dio.dart';
 import 'package:fbase_auth_test/app/config/config.dart';
 import 'package:fbase_auth_test/app/core/auth/bloc/auth_bloc.dart';
+import 'package:fbase_auth_test/app/core/http/interceptor/jwt_auth_interceptor.dart';
 import 'package:fbase_auth_test/app/feature/files/ui/dashboard_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -16,32 +19,48 @@ class Application extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
+    return MultiProvider(
       providers: [
-        BlocProvider(
-            create: (context) => AuthBloc(firebaseAuth: FirebaseAuth.instance),
-            lazy: false),
-        BlocProvider(
-            create: (context) =>
-                MenuBloc(authBloc: BlocProvider.of<AuthBloc>(context)),
-            lazy: false),
+        Provider<FirebaseAuth>(create: (context) => FirebaseAuth.instance),
+        Provider<JwtAuthInterceptor>(
+            create: (context) => JwtAuthInterceptor(
+                Provider.of<FirebaseAuth>(context, listen: false))),
+        Provider<BackendApi>(
+            create: (context) => BackendApi(interceptors: [
+                  LogInterceptor(),
+                  Provider.of<JwtAuthInterceptor>(context, listen: false)
+                ]))
       ],
-      child: MultiProvider(
+      child: MultiBlocProvider(
         providers: [
-          ChangeNotifierProvider(create: (context) => MenuController())
+          BlocProvider(
+              create: (context) =>
+                  AuthBloc(firebaseAuth: FirebaseAuth.instance),
+              lazy: false),
+          BlocProvider(
+              create: (context) =>
+                  MenuBloc(authBloc: BlocProvider.of<AuthBloc>(context)),
+              lazy: false),
         ],
-        child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'Project Management Tool',
-          theme: ThemeData.dark().copyWith(
-            scaffoldBackgroundColor: Config.backgroundColor,
-            textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)
-                .apply(bodyColor: Colors.white),
-            canvasColor: Config.secondaryColor,
+        child: MultiProvider(
+          providers: [
+            ChangeNotifierProvider(create: (context) => MenuController())
+          ],
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'Project Management Tool',
+            theme: ThemeData.dark().copyWith(
+              scaffoldBackgroundColor: Config.backgroundColor,
+              textTheme:
+                  GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)
+                      .apply(bodyColor: Colors.white),
+              canvasColor: Config.secondaryColor,
+            ),
+            initialRoute: FirebaseAuth.instance.currentUser == null
+                ? '/sign-in'
+                : '/home',
+            routes: routes,
           ),
-          initialRoute:
-              FirebaseAuth.instance.currentUser == null ? '/sign-in' : '/home',
-          routes: routes,
         ),
       ),
     );

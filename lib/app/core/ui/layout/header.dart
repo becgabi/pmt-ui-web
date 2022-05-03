@@ -1,6 +1,6 @@
 import 'package:fbase_auth_test/app/core/auth/bloc/auth_bloc.dart';
 import 'package:fbase_auth_test/app/config/config.dart';
-import 'package:fbase_auth_test/app/config/responsive.dart';
+import 'package:fbase_auth_test/app/core/ui/layout/responsive.dart';
 import 'package:fbase_auth_test/app/menu/menu_bloc.dart';
 import 'package:fbase_auth_test/app/menu/menu_controller.dart';
 import 'package:fbase_auth_test/app/menu/menu_state.dart';

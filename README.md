@@ -22,6 +22,15 @@ IDEA: Settings/Plugins: Dart plugin telepítése
 Chrome (web) target device kiválasztása
 main.dart indítása (lib/app/main.dart)
 
+## OpenApi contract követés
+Minden contract változást ami a backenden történt át kell vezetni ebbe a projektbe is.
+(Jelenlegi megoldás a contract folder tartalmát törölve felülírni a pmt-backend/pmt-backend-api/contract tartalmával)
+A változások migrálása után újra kell generálni az api-t (a clean törli az előző verziót elvileg)
+  ```shell
+  flutter pub run build_runner clean && 
+  flutter pub run build_runner build --delete-conflicting-outputs
+  ```
+
 ## CORS probléma
 Flutter web platformon az API kérések az alábbi hibával elakadnak:
 ```

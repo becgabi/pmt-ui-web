@@ -1,0 +1,113 @@
+colleagues:
+  get:
+    summary: Get colleagues filtered by an optional name parameter (if parameter is given it act as a like filter)
+    operationId: findColleague
+    parameters:
+      - in: query
+        name: name
+        schema:
+          type: string
+    responses:
+      '200':
+        description: Operation successful
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '../masterdata/colleague-model.yaml#/components/schemas/Colleague'
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+    tags:
+      - colleague
+  post:
+    summary: Create an colleague
+    operationId: create
+    requestBody:
+      description: Colleague
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../masterdata/colleague-model.yaml#/components/schemas/Colleague'
+    responses:
+      '201':
+        description: The new resource is created
+        content:
+          application/json:
+            schema:
+              $ref: '../common/common.yaml#/components/schemas/IdentifierResponse'
+      '400': { $ref: '../common/response.yaml#/components/responses/BadRequest' }
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+      '422': { $ref: '../common/response.yaml#/components/responses/Unprocessable' }
+    tags:
+      - colleague
+
+colleague:
+  parameters:
+    - $ref: '../common/common.yaml#/components/parameters/idPathParam'
+  get:
+    summary: Get an colleague
+    operationId: getOne
+    responses:
+      '200':
+        description: Operation successful
+        content:
+          application/json:
+            schema:
+              $ref: '../masterdata/colleague-model.yaml#/components/schemas/Colleague'
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+      '404': { $ref: '../common/response.yaml#/components/responses/NotFound' }
+    tags:
+      - colleague
+  put:
+    summary: Update an colleague
+    operationId: update
+    requestBody:
+      description: Colleague
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../masterdata/colleague-model.yaml#/components/schemas/Colleague'
+    responses:
+      '200':
+        description: Operation successful
+      '400': { $ref: '../common/response.yaml#/components/responses/BadRequest' }
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+      '422': { $ref: '../common/response.yaml#/components/responses/Unprocessable' }
+    tags:
+      - colleague
+  delete:
+    summary: Delete an colleague
+    operationId: delete
+    parameters:
+      - $ref: '../common/common.yaml#/components/parameters/idPathParam'
+    responses:
+      '204':
+        description: Operation successful
+      '400': { $ref: '../common/response.yaml#/components/responses/BadRequest' }
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+    tags:
+      - colleague
+
+self:
+  get:
+    summary: Get the colleague identified by JWT auth token
+    operationId: getByAuthToken
+    responses:
+      '200':
+        description: Operation successful
+        content:
+          application/json:
+            schema:
+              $ref: '../masterdata/colleague-model.yaml#/components/schemas/Colleague'
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+      '404': { $ref: '../common/response.yaml#/components/responses/NotFound' }
+    tags:
+      - colleague
