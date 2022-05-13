@@ -4,6 +4,9 @@ import 'package:fbase_auth_test/app/feature/files/ui/components/recent_files.dar
 import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatelessWidget {
+  static const route = "/dashboard";
+  static const title = "Dashboard";
+
   const DashboardScreen({Key? key}) : super(key: key);
 
   @override
