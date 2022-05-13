@@ -1,36 +1,17 @@
+import 'package:fbase_auth_test/app/feature/files/ui/dashboard_screen.dart';
+import 'package:fbase_auth_test/app/feature/profile/ui/profile_screen.dart';
 import 'package:fbase_auth_test/app/menu/menu_item.dart';
+import 'package:fbase_auth_test/app/router/app_router.gr.dart';
 
 const List<MenuItem> fixedMenuItems = [
   MenuItem(
-    title: "Dashboard",
+    route: DashboardRoute(),
+    title: DashboardScreen.title,
     icon: "assets/icons/menu_dashbord.svg",
   ),
   MenuItem(
-    title: "Transaction",
-    icon: "assets/icons/menu_tran.svg",
-  ),
-  MenuItem(
-    title: "Task",
-    icon: "assets/icons/menu_task.svg",
-  ),
-  MenuItem(
-    title: "Documents",
-    icon: "assets/icons/menu_doc.svg",
-  ),
-  MenuItem(
-    title: "Store",
-    icon: "assets/icons/menu_store.svg",
-  ),
-  MenuItem(
-    title: "Notification",
-    icon: "assets/icons/menu_notification.svg",
-  ),
-  MenuItem(
-    title: "Profiles",
+    route: ProfileRoute(),
+    title: ProfileScreen.title,
     icon: "assets/icons/menu_profile.svg",
-  ),
-  MenuItem(
-    title: "Settings",
-    icon: "assets/icons/menu_setting.svg",
   ),
 ];

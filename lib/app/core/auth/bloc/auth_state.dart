@@ -28,8 +28,9 @@ class SigningOut extends AuthState {
 
 class Authenticated extends AuthState {
   final User user;
+  final List<Permission> permissions;
 
-  const Authenticated({required this.user});
+  const Authenticated({required this.user, required this.permissions});
 
   @override
   List<Object?> get props => [user.uid];

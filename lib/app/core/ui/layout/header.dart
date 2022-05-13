@@ -1,9 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:fbase_auth_test/app/core/auth/bloc/auth_bloc.dart';
 import 'package:fbase_auth_test/app/config/config.dart';
-import 'package:fbase_auth_test/app/core/ui/layout/responsive.dart';
 import 'package:fbase_auth_test/app/menu/menu_bloc.dart';
-import 'package:fbase_auth_test/app/menu/menu_controller.dart';
 import 'package:fbase_auth_test/app/menu/menu_state.dart';
+import 'package:fbase_auth_test/app/core/ui/layout/responsive.dart';
+import 'package:fbase_auth_test/app/router/app_router.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,7 +20,7 @@ class Header extends StatelessWidget {
             if (!Responsive.isDesktop(context))
               IconButton(
                 icon: const Icon(Icons.menu),
-                onPressed: context.read<MenuController>().toggleMenu,
+                onPressed: Scaffold.of(context).openDrawer,
               ),
             if (!Responsive.isMobile(context))
               Text(
@@ -88,6 +89,6 @@ class ProfileCard extends StatelessWidget {
 
   void _handleSignOut(BuildContext context) {
     context.read<AuthBloc>().add(const SignOut());
-    Navigator.pushReplacementNamed(context, '/sign-in');
+    context.router.replace(const SignInRoute());
   }
 }

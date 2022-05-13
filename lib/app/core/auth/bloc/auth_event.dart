@@ -7,8 +7,9 @@ abstract class AuthEvent with EquatableMixin {
 
 class SignedIn extends AuthEvent {
   final User user;
+  final List<Permission> permissions;
 
-  const SignedIn({required this.user});
+  const SignedIn({required this.user, required this.permissions});
 
   @override
   List<Object?> get props => [user];

@@ -9,17 +9,38 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
       : super(const MenuState(menuItems: [])) {
     authBloc.stream.listen((authState) {
       if (authState is Authenticated) {
-        add(const MenuUpdated(menuItems: fixedMenuItems));
+        add(MenuUpdated(
+          menuItems: fixedMenuItems,
+          permissions: authState.permissions,
+        ));
       } else {
-        add(const MenuUpdated(menuItems: []));
+        add(const MenuUpdated(menuItems: [], permissions: []));
       }
     });
 
     on<MenuSelected>((event, emit) {
       emit(state.copyWith(selectedItem: () => event.menuItem));
     });
+
+    on<MenuPushed>((event, emit) {
+      final filteredMenuItems = fixedMenuItems
+          .where((element) => element.route.routeName == event.routeName)
+          .toList();
+      if (filteredMenuItems.length == 1) {
+        emit(state.copyWith(selectedItem: () => filteredMenuItems.first));
+      }
+    });
+
     on<MenuUpdated>((event, emit) {
-      emit(MenuState(menuItems: event.menuItems));
+      final menuItems = event.menuItems
+          .where((element) =>
+              element.permissions.isEmpty ||
+              element.permissions
+                  .toSet()
+                  .intersection(event.permissions.toSet())
+                  .isNotEmpty)
+          .toList();
+      emit(MenuState(menuItems: menuItems));
     });
   }
 }

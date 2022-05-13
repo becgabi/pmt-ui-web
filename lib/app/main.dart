@@ -17,5 +17,5 @@ Future<void> main() async {
     const EmailProviderConfiguration(),
   ]);
 
-  runApp(const Application());
+  runApp(Application());
 }

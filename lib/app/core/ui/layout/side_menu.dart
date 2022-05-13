@@ -1,5 +1,5 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:fbase_auth_test/app/menu/menu_bloc.dart';
-import 'package:fbase_auth_test/app/menu/menu_event.dart';
 import 'package:fbase_auth_test/app/menu/menu_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,11 +19,9 @@ class SideMenu extends StatelessWidget {
                   title: e.title,
                   svgIcon: e.icon,
                   selected: e == state.selectedItem,
-                  press: () =>
-                      context.read<MenuBloc>().add(MenuSelected(menuItem: e)),
+                  press: () => context.router.replace(e.route),
                 ))
             .toList();
-        print(items);
         return Drawer(
           child: ListView(
             children: [
