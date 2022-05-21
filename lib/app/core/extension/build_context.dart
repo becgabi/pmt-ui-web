@@ -16,4 +16,8 @@ extension ShowSnackBar on BuildContext {
       backgroundColor: Colors.red,
     ));
   }
+
+  void showSavedSnackBar() => showInfoSnackBar('Saved successfully!');
+
+  void showDeletedSnackBar() => showInfoSnackBar('Deleted successfully!');
 }

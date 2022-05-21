@@ -23,3 +23,6 @@
 #!docs/README.md
 
 pubspec.yaml
+
+doc/*.md
+test/*.dart

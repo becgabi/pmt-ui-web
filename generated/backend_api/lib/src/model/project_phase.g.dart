@@ -21,6 +21,8 @@ class _$ProjectPhase extends ProjectPhase {
   final Date? phaseEnd;
   @override
   final Date? deadline;
+  @override
+  final int? projectId;
 
   factory _$ProjectPhase([void Function(ProjectPhaseBuilder)? updates]) =>
       (new ProjectPhaseBuilder()..update(updates)).build();
@@ -32,7 +34,8 @@ class _$ProjectPhase extends ProjectPhase {
       this.description,
       this.phaseStart,
       this.phaseEnd,
-      this.deadline})
+      this.deadline,
+      this.projectId})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(name, 'ProjectPhase', 'name');
   }
@@ -54,7 +57,8 @@ class _$ProjectPhase extends ProjectPhase {
         description == other.description &&
         phaseStart == other.phaseStart &&
         phaseEnd == other.phaseEnd &&
-        deadline == other.deadline;
+        deadline == other.deadline &&
+        projectId == other.projectId;
   }
 
   @override
@@ -63,12 +67,14 @@ class _$ProjectPhase extends ProjectPhase {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc($jc(0, id.hashCode), phaseType.hashCode),
-                        name.hashCode),
-                    description.hashCode),
-                phaseStart.hashCode),
-            phaseEnd.hashCode),
-        deadline.hashCode));
+                    $jc(
+                        $jc($jc($jc(0, id.hashCode), phaseType.hashCode),
+                            name.hashCode),
+                        description.hashCode),
+                    phaseStart.hashCode),
+                phaseEnd.hashCode),
+            deadline.hashCode),
+        projectId.hashCode));
   }
 
   @override
@@ -80,7 +86,8 @@ class _$ProjectPhase extends ProjectPhase {
           ..add('description', description)
           ..add('phaseStart', phaseStart)
           ..add('phaseEnd', phaseEnd)
-          ..add('deadline', deadline))
+          ..add('deadline', deadline)
+          ..add('projectId', projectId))
         .toString();
   }
 }
@@ -117,6 +124,10 @@ class ProjectPhaseBuilder
   Date? get deadline => _$this._deadline;
   set deadline(Date? deadline) => _$this._deadline = deadline;
 
+  int? _projectId;
+  int? get projectId => _$this._projectId;
+  set projectId(int? projectId) => _$this._projectId = projectId;
+
   ProjectPhaseBuilder() {
     ProjectPhase._defaults(this);
   }
@@ -131,6 +142,7 @@ class ProjectPhaseBuilder
       _phaseStart = $v.phaseStart;
       _phaseEnd = $v.phaseEnd;
       _deadline = $v.deadline;
+      _projectId = $v.projectId;
       _$v = null;
     }
     return this;
@@ -158,7 +170,8 @@ class ProjectPhaseBuilder
             description: description,
             phaseStart: phaseStart,
             phaseEnd: phaseEnd,
-            deadline: deadline);
+            deadline: deadline,
+            projectId: projectId);
     replace(_$result);
     return _$result;
   }

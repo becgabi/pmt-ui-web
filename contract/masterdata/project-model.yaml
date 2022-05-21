@@ -53,6 +53,8 @@ components:
           $ref: '../common/base-type.yaml#/components/schemas/Date'
         deadline:
           $ref: '../common/base-type.yaml#/components/schemas/Date'
+        projectId:
+          $ref: '../common/base-type.yaml#/components/schemas/Id'
       required:
         - type
         - name
