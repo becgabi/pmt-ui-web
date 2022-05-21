@@ -6,7 +6,6 @@ import 'package:fbase_auth_test/app/core/auth/bloc/auth_bloc.dart';
 import 'package:fbase_auth_test/app/core/http/interceptor/jwt_auth_interceptor.dart';
 import 'package:fbase_auth_test/app/feature/colleague/repository/colleague_repository.dart';
 import 'package:fbase_auth_test/app/feature/partner/repository/partner_repository.dart';
-import 'package:fbase_auth_test/app/feature/profile/repository/profile_repository.dart';
 import 'package:fbase_auth_test/app/feature/project/repository/project_phase_repository.dart';
 import 'package:fbase_auth_test/app/feature/project/repository/project_repository.dart';
 import 'package:fbase_auth_test/app/feature/time_sheet/repository/time_sheet_repository.dart';
@@ -88,11 +87,6 @@ class Application extends StatelessWidget {
             create: (context) => ColleagueRepository(
                 Provider.of<BackendApi>(context, listen: false)
                     .getColleagueApi()),
-            lazy: false),
-        RepositoryProvider(
-            create: (context) => ProfileRepository(
-                Provider.of<BackendApi>(context, listen: false)
-                    .getProfileApi()),
             lazy: false),
         RepositoryProvider(
             create: (context) => ProjectRepository(

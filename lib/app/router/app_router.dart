@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fbase_auth_test/app/core/auth/ui/sign_in_screen.dart';
 import 'package:fbase_auth_test/app/feature/files/ui/dashboard_screen.dart';
-import 'package:fbase_auth_test/app/feature/profile/ui/profile_screen.dart';
 import 'package:fbase_auth_test/app/feature/project/ui/screen/project_detail_screen.dart';
 import 'package:fbase_auth_test/app/feature/project/ui/screen/project_list_screen.dart';
 import 'package:fbase_auth_test/app/feature/time_sheet/ui/screen/time_sheet_screen.dart';
@@ -12,10 +11,6 @@ import 'package:fbase_auth_test/app/router/guards/authorization_guard.dart';
   replaceInRouteName: 'Screen,Route',
   routes: <AutoRoute>[
     AutoRoute(path: SignInScreen.route, page: SignInScreen, initial: true),
-    AutoRoute(
-        path: ProfileScreen.route,
-        page: ProfileScreen,
-        guards: [AuthenticationGuard]),
     AutoRoute(
         path: ProjectListScreen.route,
         page: ProjectListScreen,

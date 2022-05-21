@@ -13,13 +13,6 @@ security:
 
 paths:
   #
-  # Profile API (Collected in ProfileApi)
-  # TODO: Deprecated: Csak a POC miatt lett lefejlesztve, ki kell vezetni
-  #
-  '/api/profile':
-    $ref: 'masterdata/profile-api.yaml#/profile'
-
-  #
   # Colleague API
   #
   '/api/colleagues':
