@@ -1,0 +1,21 @@
+openapi: "3.0.1"
+info:
+  title: Calendar API Components
+  description: Calendar API Components
+  version: '1.0'
+paths:
+
+components:
+  schemas:
+    CalendarData:
+      type: object
+      title: Moved workdays and non-working days of a month
+      properties:
+        movedWorkdays:
+          type: array
+          items:
+            type: string
+        nonWorkingDays:
+          type: array
+          items:
+            type: string

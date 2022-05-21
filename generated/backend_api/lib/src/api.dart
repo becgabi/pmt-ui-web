@@ -9,9 +9,9 @@ import 'package:backend_api/src/auth/api_key_auth.dart';
 import 'package:backend_api/src/auth/basic_auth.dart';
 import 'package:backend_api/src/auth/bearer_auth.dart';
 import 'package:backend_api/src/auth/oauth.dart';
+import 'package:backend_api/src/api/calendar_api.dart';
 import 'package:backend_api/src/api/colleague_api.dart';
 import 'package:backend_api/src/api/partner_api.dart';
-import 'package:backend_api/src/api/profile_api.dart';
 import 'package:backend_api/src/api/project_api.dart';
 import 'package:backend_api/src/api/project_phase_api.dart';
 import 'package:backend_api/src/api/time_sheet_api.dart';
@@ -70,6 +70,12 @@ class BackendApi {
     }
   }
 
+  /// Get CalendarApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  CalendarApi getCalendarApi() {
+    return CalendarApi(dio, serializers);
+  }
+
   /// Get ColleagueApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   ColleagueApi getColleagueApi() {
@@ -80,12 +86,6 @@ class BackendApi {
   /// by doing that all interceptors will not be executed
   PartnerApi getPartnerApi() {
     return PartnerApi(dio, serializers);
-  }
-
-  /// Get ProfileApi instance, base route and serializer can be overridden by a given but be careful,
-  /// by doing that all interceptors will not be executed
-  ProfileApi getProfileApi() {
-    return ProfileApi(dio, serializers);
   }
 
   /// Get ProjectApi instance, base route and serializer can be overridden by a given but be careful,

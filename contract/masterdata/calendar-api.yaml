@@ -1,0 +1,139 @@
+calendar-data:
+  get:
+    parameters:
+      - name: year
+        description: Year path parameter
+        in: path
+        required: true
+        schema:
+          $ref: '../common/base-type.yaml#/components/schemas/Int'
+    summary: Get non-working days and moved workdays of a year
+    operationId: getCalendarData
+    responses:
+      '200':
+        description: Operation successful
+        content:
+          application/json:
+            schema:
+              $ref: '../masterdata/calendar-model.yaml#/components/schemas/CalendarData'
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+    tags:
+      - calendar
+
+absences:
+  parameters:
+    - name: year
+      description: Year path parameter
+      in: path
+      required: true
+      schema:
+        $ref: '../common/base-type.yaml#/components/schemas/Int'
+  get:
+    summary: Get monthly absences
+    operationId: getAbsences
+    responses:
+      '200':
+        description: Operation successful
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+    tags:
+      - calendar
+  put:
+    summary: Replace current user's absence list
+    operationId: saveAbsences
+    requestBody:
+      description: Date list
+      required: true
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: string
+    responses:
+      '204':
+        description: Operation successful
+      '400': { $ref: '../common/response.yaml#/components/responses/BadRequest' }
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+      '422': { $ref: '../common/response.yaml#/components/responses/Unprocessable' }
+    tags:
+      - calendar
+
+office-days:
+  parameters:
+    - name: year
+      description: Year path parameter
+      in: path
+      required: true
+      schema:
+        $ref: '../common/base-type.yaml#/components/schemas/Int'
+    - name: month
+      description: Month path parameter
+      in: path
+      required: true
+      schema:
+        $ref: '../common/base-type.yaml#/components/schemas/Int'
+  get:
+    summary: Get monthly colleague presence in office
+    operationId: getOfficeDays
+    responses:
+      '200':
+        description: Operation successful
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: array
+                items:
+                  $ref: '../common/base-type.yaml#/components/schemas/Id'
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+    tags:
+      - calendar
+  put:
+    summary: Add current user's new dates to office presence list
+    operationId: saveOfficeDays
+    requestBody:
+      description: Date list
+      required: true
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '../common/base-type.yaml#/components/schemas/Date'
+    responses:
+      '204':
+        description: Operation successful
+      '400': { $ref: '../common/response.yaml#/components/responses/BadRequest' }
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+      '422': { $ref: '../common/response.yaml#/components/responses/Unprocessable' }
+    tags:
+      - calendar
+
+office-employee-capacity:
+  get:
+    summary: Get the employee capacity of the office
+    operationId: getOfficeEmployeeCapacity
+    responses:
+      '200':
+        description: Operation successful
+        content:
+          application/json:
+            schema:
+              $ref: '../common/base-type.yaml#/components/schemas/Int'
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+    tags:
+      - calendar
+

@@ -13,13 +13,6 @@ security:
 
 paths:
   #
-  # Profile API (Collected in ProfileApi)
-  # TODO: Deprecated: Csak a POC miatt lett lefejlesztve, ki kell vezetni
-  #
-  '/api/profile':
-    $ref: 'masterdata/profile-api.yaml#/profile'
-
-  #
   # Colleague API
   #
   '/api/colleagues':
@@ -65,6 +58,18 @@ paths:
   '/api/phases/{id}':
     description: Get / update / delete phase by phase id
     $ref: 'masterdata/project-api.yaml#/phase'
+
+  #
+  # Calendar API
+  #
+  '/api/calendar/data/{year}':
+    $ref: 'masterdata/calendar-api.yaml#/calendar-data'
+  '/api/calendar/absences/{year}':
+    $ref: 'masterdata/calendar-api.yaml#/absences'
+  '/api/calendar/officedays/{year}/{month}':
+    $ref: 'masterdata/calendar-api.yaml#/office-days'
+  '/api/calendar/officeEmployeeCapacity':
+    $ref: 'masterdata/calendar-api.yaml#/office-employee-capacity'
 
 components:
   securitySchemes:
