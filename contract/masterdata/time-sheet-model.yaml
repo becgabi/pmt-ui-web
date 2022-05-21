@@ -1,0 +1,53 @@
+openapi: "3.0.1"
+info:
+  title: TimeSheet API Components
+  description: TimeSheet API Components
+  version: '1.0'
+paths:
+
+components:
+  schemas:
+    TimeSheet:
+      type: object
+      title: TimeSheet
+      properties:
+        id:
+          $ref: '../common/base-type.yaml#/components/schemas/Id'
+        workedDate:
+          $ref: '../common/base-type.yaml#/components/schemas/Date'
+        sumHours:
+          $ref: '../common/base-type.yaml#/components/schemas/Int'
+        sumMinutes:
+          $ref: '../common/base-type.yaml#/components/schemas/Int'
+        colleague_id:
+          $ref: '../common/base-type.yaml#/components/schemas/Id'
+        timeSheetItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/TimeSheetItem'
+      required:
+        - workedDate
+        - sumHours
+        - sumMinutes
+        - colleague_id
+
+    TimeSheetItem:
+      type: object
+      title: TimeSheetItem
+      properties:
+        id:
+          $ref: '../common/base-type.yaml#/components/schemas/Id'
+        hours:
+          $ref: '../common/base-type.yaml#/components/schemas/Int'
+        minutes:
+          $ref: '../common/base-type.yaml#/components/schemas/Int'
+        description:
+          $ref: '../common/base-type.yaml#/components/schemas/LongText'
+        projectId:
+          $ref: '../common/base-type.yaml#/components/schemas/Id'
+        timeSheetId:
+          $ref: '../common/base-type.yaml#/components/schemas/Id'
+      required:
+        - hours
+        - minutes
+        - projectId

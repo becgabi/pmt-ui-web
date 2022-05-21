@@ -87,6 +87,10 @@ Class | Method | HTTP request | Description
 [*ProjectPhaseApi*](doc/ProjectPhaseApi.md) | [**findById**](doc/ProjectPhaseApi.md#findbyid) | **GET** /api/phases/{id} | Get project phase by id
 [*ProjectPhaseApi*](doc/ProjectPhaseApi.md) | [**findByProject**](doc/ProjectPhaseApi.md#findbyproject) | **GET** /api/projects/{id}/phases | Get project phases of given project
 [*ProjectPhaseApi*](doc/ProjectPhaseApi.md) | [**update**](doc/ProjectPhaseApi.md#update) | **PUT** /api/phases/{id} | Update project phase
+[*TimeSheetApi*](doc/TimeSheetApi.md) | [**create**](doc/TimeSheetApi.md#create) | **POST** /api/time-sheets | Create new time sheet
+[*TimeSheetApi*](doc/TimeSheetApi.md) | [**delete**](doc/TimeSheetApi.md#delete) | **DELETE** /api/time-sheets/{id} | Delete time sheet
+[*TimeSheetApi*](doc/TimeSheetApi.md) | [**findByWorkedDateAndColleague**](doc/TimeSheetApi.md#findbyworkeddateandcolleague) | **GET** /api/colleagues/{id}/time-sheet/day/{day} | Get time sheet data of the given day
+[*TimeSheetApi*](doc/TimeSheetApi.md) | [**update**](doc/TimeSheetApi.md#update) | **PUT** /api/time-sheets/{id} | Update time sheet
 
 
 ## Documentation For Models
@@ -105,6 +109,8 @@ Class | Method | HTTP request | Description
  - [ProjectPhase](doc/ProjectPhase.md)
  - [Role](doc/Role.md)
  - [SettlementMode](doc/SettlementMode.md)
+ - [TimeSheet](doc/TimeSheet.md)
+ - [TimeSheetItem](doc/TimeSheetItem.md)
  - [ValidationError](doc/ValidationError.md)
  - [ValidationProblem](doc/ValidationProblem.md)
 

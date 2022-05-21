@@ -1,0 +1,83 @@
+time-sheets:
+  post:
+    summary: Create new time sheet
+    operationId: create
+    requestBody:
+      description: Time sheet data
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../masterdata/time-sheet-model.yaml#/components/schemas/TimeSheet'
+    responses:
+      '201':
+        description: Operation successful
+        content:
+          application/json:
+            schema:
+              $ref: '../common/common.yaml#/components/schemas/IdentifierResponse'
+      '400': { $ref: '../common/response.yaml#/components/responses/BadRequest' }
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+      '422': { $ref: '../common/response.yaml#/components/responses/Unprocessable' }
+    tags:
+      - time-sheet
+
+time-sheet-of-day:
+  get:
+    summary: Get time sheet data of the given day
+    operationId: findByWorkedDateAndColleague
+    parameters:
+      - $ref: '../common/common.yaml#/components/parameters/idPathParam'
+      - name: day
+        description: Day of time sheet
+        in: path
+        required: true
+        schema:
+          $ref: '../common/base-type.yaml#/components/schemas/Date'
+    responses:
+      '200':
+        description: Operation successful
+        content:
+          application/json:
+            schema:
+              $ref: '../masterdata/time-sheet-model.yaml#/components/schemas/TimeSheet'
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+      '422': { $ref: '../common/response.yaml#/components/responses/Unprocessable' }
+    tags:
+      - time-sheet
+
+time-sheet:
+  parameters:
+    - $ref: '../common/common.yaml#/components/parameters/idPathParam'
+  put:
+    summary: Update time sheet
+    operationId: update
+    requestBody:
+      description: Time sheet data
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../masterdata/time-sheet-model.yaml#/components/schemas/TimeSheet'
+    responses:
+      '204':
+        description: Operation successful
+      '400': { $ref: '../common/response.yaml#/components/responses/BadRequest' }
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+      '422': { $ref: '../common/response.yaml#/components/responses/Unprocessable' }
+    tags:
+      - time-sheet
+  delete:
+    summary: Delete time sheet
+    operationId: delete
+    responses:
+      '204':
+        description: Operation successful
+      '400': { $ref: '../common/response.yaml#/components/responses/BadRequest' }
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+    tags:
+      - time-sheet

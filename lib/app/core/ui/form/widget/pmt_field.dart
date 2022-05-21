@@ -4,7 +4,7 @@ abstract class PmtField extends StatelessWidget {
   final String controlName;
   final String text;
   final bool? required;
-  final bool? flexible;
+  final int? flex;
   final double? width;
 
   const PmtField(
@@ -12,15 +12,15 @@ abstract class PmtField extends StatelessWidget {
       required this.controlName,
       required this.text,
       this.required,
-      this.flexible,
+      this.flex,
       this.width})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final field = buildField();
-    if (flexible ?? false) {
-      return Flexible(child: field);
+    if (flex != null) {
+      return Expanded(flex: flex!, child: field);
     }
     if (width != null) {
       return SizedBox(width: width, child: field);

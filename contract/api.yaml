@@ -7,7 +7,7 @@ info:
 servers:
   - url: http://localhost:9001
 
-  # Apply the security globally to all operations
+# Apply the security globally to all operations
 security:
   - bearerAuth: [ ]
 
@@ -28,6 +28,16 @@ paths:
     $ref: 'masterdata/colleague-api.yaml#/colleague'
   '/api/colleagues/self':
     $ref: 'masterdata/colleague-api.yaml#/self'
+
+  #
+  # Time sheet API
+  #
+  '/api/time-sheets':
+    $ref: 'masterdata/time-sheet-api.yaml#/time-sheets'
+  '/api/time-sheets/{id}':
+    $ref: 'masterdata/time-sheet-api.yaml#/time-sheet'
+  '/api/colleagues/{id}/time-sheet/day/{day}':
+    $ref: 'masterdata/time-sheet-api.yaml#/time-sheet-of-day'
 
   #
   # Partner API
@@ -76,3 +86,5 @@ components:
         - PARTNER_EDIT
         - PROJECT_VIEW
         - PROJECT_EDIT
+        - TIME_SHEET_VIEW
+        - TIME_SHEET_EDIT

@@ -14,6 +14,7 @@ import 'package:backend_api/src/api/partner_api.dart';
 import 'package:backend_api/src/api/profile_api.dart';
 import 'package:backend_api/src/api/project_api.dart';
 import 'package:backend_api/src/api/project_phase_api.dart';
+import 'package:backend_api/src/api/time_sheet_api.dart';
 
 class BackendApi {
   static const String basePath = r'http://localhost:9001';
@@ -97,5 +98,11 @@ class BackendApi {
   /// by doing that all interceptors will not be executed
   ProjectPhaseApi getProjectPhaseApi() {
     return ProjectPhaseApi(dio, serializers);
+  }
+
+  /// Get TimeSheetApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  TimeSheetApi getTimeSheetApi() {
+    return TimeSheetApi(dio, serializers);
   }
 }

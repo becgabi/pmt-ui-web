@@ -7,7 +7,10 @@ extension ResponseListParsing<T> on Future<Response<BuiltList<T>>> {
 }
 
 extension ResponseParsing<T> on Future<Response<T>> {
-  Future<T?> parseNullableResponse() => then((response) => response.data);
+  Future<T?> parseNullableResponse() {
+    return then((response) => response.data)
+        .catchError((error, stacktrace) => null);
+  }
 
   Future<T> parseResponse() => then((response) => response.data!);
 }

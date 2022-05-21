@@ -21,11 +21,16 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ProjectPhase.serializer)
       ..add(Role.serializer)
       ..add(SettlementMode.serializer)
+      ..add(TimeSheet.serializer)
+      ..add(TimeSheetItem.serializer)
       ..add(ValidationError.serializer)
       ..add(ValidationProblem.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(ProjectPhase)]),
           () => new ListBuilder<ProjectPhase>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(TimeSheetItem)]),
+          () => new ListBuilder<TimeSheetItem>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(ValidationError)]),
           () => new ListBuilder<ValidationError>())
