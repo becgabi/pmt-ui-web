@@ -19,6 +19,7 @@ part 'project_phase.g.dart';
 /// * [phaseStart] 
 /// * [phaseEnd] 
 /// * [deadline] 
+/// * [projectId] - ID of object
 abstract class ProjectPhase implements Built<ProjectPhase, ProjectPhaseBuilder> {
     /// ID of object
     @BuiltValueField(wireName: r'id')
@@ -42,6 +43,10 @@ abstract class ProjectPhase implements Built<ProjectPhase, ProjectPhaseBuilder> 
 
     @BuiltValueField(wireName: r'deadline')
     Date? get deadline;
+
+    /// ID of object
+    @BuiltValueField(wireName: r'projectId')
+    int? get projectId;
 
     ProjectPhase._();
 
@@ -105,6 +110,12 @@ class _$ProjectPhaseSerializer implements StructuredSerializer<ProjectPhase> {
                 ..add(serializers.serialize(object.deadline,
                     specifiedType: const FullType(Date)));
         }
+        if (object.projectId != null) {
+            result
+                ..add(r'projectId')
+                ..add(serializers.serialize(object.projectId,
+                    specifiedType: const FullType(int)));
+        }
         return result;
     }
 
@@ -154,6 +165,11 @@ class _$ProjectPhaseSerializer implements StructuredSerializer<ProjectPhase> {
                     final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(Date)) as Date;
                     result.deadline = valueDes;
+                    break;
+                case r'projectId':
+                    final valueDes = serializers.deserialize(value,
+                        specifiedType: const FullType(int)) as int;
+                    result.projectId = valueDes;
                     break;
             }
         }

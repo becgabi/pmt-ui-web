@@ -50,6 +50,12 @@ dependencies:
   # The name 'backend_api' comes from openapi_generator_config.dart (GeneratorConfig > AdditionalProperties > pubName')
   backend_api:
     path: generated/backend_api
+  intl: ^0.17.0
+
+  # Reactive forms
+  reactive_forms: ^12.0.0
+  reactive_dropdown_search: ^0.8.0
+  reactive_date_time_picker: ^0.3.0
 
 dev_dependencies:
   flutter_test:
