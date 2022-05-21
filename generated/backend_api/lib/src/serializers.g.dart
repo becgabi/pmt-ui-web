@@ -7,6 +7,7 @@ part of 'serializers.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(CalendarData.serializer)
       ..add(Colleague.serializer)
       ..add(ColleagueStatus.serializer)
       ..add(ColleagueType.serializer)
@@ -16,7 +17,6 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Partner.serializer)
       ..add(Permission.serializer)
       ..add(PhaseType.serializer)
-      ..add(Profile.serializer)
       ..add(Project.serializer)
       ..add(ProjectPhase.serializer)
       ..add(Role.serializer)
@@ -28,6 +28,12 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(ProjectPhase)]),
           () => new ListBuilder<ProjectPhase>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(String)]),
+          () => new ListBuilder<String>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(TimeSheetItem)]),
           () => new ListBuilder<TimeSheetItem>())

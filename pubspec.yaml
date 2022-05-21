@@ -57,6 +57,9 @@ dependencies:
   reactive_dropdown_search: ^0.8.0
   reactive_date_time_picker: ^0.3.0
 
+  # Calendar
+  table_calendar: ^3.0.5
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

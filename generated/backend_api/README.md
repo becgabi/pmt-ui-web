@@ -46,14 +46,14 @@ Please follow the [installation procedure](#installation--usage) and then run th
 import 'package:backend_api/backend_api.dart';
 
 
-final api = BackendApi().getColleagueApi();
-final Colleague colleague = ; // Colleague | Colleague
+final api = BackendApi().getCalendarApi();
+final int year = 56; // int | Year path parameter
 
 try {
-    final response = await api.create(colleague);
+    final response = await api.getAbsences(year);
     print(response);
 } catch on DioError (e) {
-    print("Exception when calling ColleagueApi->create: $e\n");
+    print("Exception when calling CalendarApi->getAbsences: $e\n");
 }
 
 ```
@@ -64,6 +64,12 @@ All URIs are relative to *http://localhost:9001*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+[*CalendarApi*](doc/CalendarApi.md) | [**getAbsences**](doc/CalendarApi.md#getabsences) | **GET** /api/calendar/absences/{year} | Get monthly absences
+[*CalendarApi*](doc/CalendarApi.md) | [**getCalendarData**](doc/CalendarApi.md#getcalendardata) | **GET** /api/calendar/data/{year} | Get non-working days and moved workdays of a year
+[*CalendarApi*](doc/CalendarApi.md) | [**getOfficeDays**](doc/CalendarApi.md#getofficedays) | **GET** /api/calendar/officedays/{year}/{month} | Get monthly colleague presence in office
+[*CalendarApi*](doc/CalendarApi.md) | [**getOfficeEmployeeCapacity**](doc/CalendarApi.md#getofficeemployeecapacity) | **GET** /api/calendar/officeEmployeeCapacity | Get the employee capacity of the office
+[*CalendarApi*](doc/CalendarApi.md) | [**saveAbsences**](doc/CalendarApi.md#saveabsences) | **PUT** /api/calendar/absences/{year} | Replace current user&#39;s absence list
+[*CalendarApi*](doc/CalendarApi.md) | [**saveOfficeDays**](doc/CalendarApi.md#saveofficedays) | **PUT** /api/calendar/officedays/{year}/{month} | Add current user&#39;s new dates to office presence list
 [*ColleagueApi*](doc/ColleagueApi.md) | [**create**](doc/ColleagueApi.md#create) | **POST** /api/colleagues | Create an colleague
 [*ColleagueApi*](doc/ColleagueApi.md) | [**delete**](doc/ColleagueApi.md#delete) | **DELETE** /api/colleagues/{id} | Delete an colleague
 [*ColleagueApi*](doc/ColleagueApi.md) | [**findColleague**](doc/ColleagueApi.md#findcolleague) | **GET** /api/colleagues | Get colleagues filtered by an optional name parameter (if parameter is given it act as a like filter)
@@ -75,7 +81,6 @@ Class | Method | HTTP request | Description
 [*PartnerApi*](doc/PartnerApi.md) | [**getAll**](doc/PartnerApi.md#getall) | **GET** /api/partners | Get all partners
 [*PartnerApi*](doc/PartnerApi.md) | [**getOne**](doc/PartnerApi.md#getone) | **GET** /api/partners/{id} | Get a single partner
 [*PartnerApi*](doc/PartnerApi.md) | [**update**](doc/PartnerApi.md#update) | **PUT** /api/partners/{id} | Update a partner
-[*ProfileApi*](doc/ProfileApi.md) | [**findByIdToken**](doc/ProfileApi.md#findbyidtoken) | **GET** /api/profile | Get the profile of the authenticated users
 [*ProjectApi*](doc/ProjectApi.md) | [**create**](doc/ProjectApi.md#create) | **POST** /api/partners/{id}/projects | Create new project
 [*ProjectApi*](doc/ProjectApi.md) | [**delete**](doc/ProjectApi.md#delete) | **DELETE** /api/projects/{id} | Delete project
 [*ProjectApi*](doc/ProjectApi.md) | [**findAll**](doc/ProjectApi.md#findall) | **GET** /api/projects | Get all projects
@@ -95,6 +100,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [CalendarData](doc/CalendarData.md)
  - [Colleague](doc/Colleague.md)
  - [ColleagueStatus](doc/ColleagueStatus.md)
  - [ColleagueType](doc/ColleagueType.md)
@@ -104,7 +110,6 @@ Class | Method | HTTP request | Description
  - [Partner](doc/Partner.md)
  - [Permission](doc/Permission.md)
  - [PhaseType](doc/PhaseType.md)
- - [Profile](doc/Profile.md)
  - [Project](doc/Project.md)
  - [ProjectPhase](doc/ProjectPhase.md)
  - [Role](doc/Role.md)

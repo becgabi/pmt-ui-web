@@ -12,6 +12,7 @@ import 'package:built_value/iso_8601_date_time_serializer.dart';
 import 'package:backend_api/src/date_serializer.dart';
 import 'package:backend_api/src/model/date.dart';
 
+import 'package:backend_api/src/model/calendar_data.dart';
 import 'package:backend_api/src/model/colleague.dart';
 import 'package:backend_api/src/model/colleague_status.dart';
 import 'package:backend_api/src/model/colleague_type.dart';
@@ -21,7 +22,6 @@ import 'package:backend_api/src/model/identifier_response.dart';
 import 'package:backend_api/src/model/partner.dart';
 import 'package:backend_api/src/model/permission.dart';
 import 'package:backend_api/src/model/phase_type.dart';
-import 'package:backend_api/src/model/profile.dart';
 import 'package:backend_api/src/model/project.dart';
 import 'package:backend_api/src/model/project_phase.dart';
 import 'package:backend_api/src/model/role.dart';
@@ -34,6 +34,7 @@ import 'package:backend_api/src/model/validation_problem.dart';
 part 'serializers.g.dart';
 
 @SerializersFor([
+  CalendarData,
   Colleague,
   ColleagueStatus,
   ColleagueType,
@@ -43,7 +44,6 @@ part 'serializers.g.dart';
   Partner,
   Permission,
   PhaseType,
-  Profile,
   Project,
   ProjectPhase,
   Role,
@@ -54,6 +54,18 @@ part 'serializers.g.dart';
   ValidationProblem,
 ])
 Serializers serializers = (_$serializers.toBuilder()
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(String)]),
+        () => ListBuilder<String>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(Date)]),
+        () => ListBuilder<Date>(),
+      )
+      ..addBuilderFactory(
+        const FullType(BuiltMap, [FullType(String), FullType(BuiltList)]),
+        () => MapBuilder<String, BuiltList>(),
+      )
       ..addBuilderFactory(
         const FullType(BuiltList, [FullType(Colleague)]),
         () => ListBuilder<Colleague>(),

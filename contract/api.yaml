@@ -59,6 +59,18 @@ paths:
     description: Get / update / delete phase by phase id
     $ref: 'masterdata/project-api.yaml#/phase'
 
+  #
+  # Calendar API
+  #
+  '/api/calendar/data/{year}':
+    $ref: 'masterdata/calendar-api.yaml#/calendar-data'
+  '/api/calendar/absences/{year}':
+    $ref: 'masterdata/calendar-api.yaml#/absences'
+  '/api/calendar/officedays/{year}/{month}':
+    $ref: 'masterdata/calendar-api.yaml#/office-days'
+  '/api/calendar/officeEmployeeCapacity':
+    $ref: 'masterdata/calendar-api.yaml#/office-employee-capacity'
+
 components:
   securitySchemes:
     bearerAuth: # arbitrary name for the security scheme

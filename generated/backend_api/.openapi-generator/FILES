@@ -3,9 +3,9 @@ README.md
 analysis_options.yaml
 lib/backend_api.dart
 lib/src/api.dart
+lib/src/api/calendar_api.dart
 lib/src/api/colleague_api.dart
 lib/src/api/partner_api.dart
-lib/src/api/profile_api.dart
 lib/src/api/project_api.dart
 lib/src/api/project_phase_api.dart
 lib/src/api/time_sheet_api.dart
@@ -16,6 +16,7 @@ lib/src/auth/basic_auth.dart
 lib/src/auth/bearer_auth.dart
 lib/src/auth/oauth.dart
 lib/src/date_serializer.dart
+lib/src/model/calendar_data.dart
 lib/src/model/colleague.dart
 lib/src/model/colleague_status.dart
 lib/src/model/colleague_type.dart
@@ -26,7 +27,6 @@ lib/src/model/identifier_response.dart
 lib/src/model/partner.dart
 lib/src/model/permission.dart
 lib/src/model/phase_type.dart
-lib/src/model/profile.dart
 lib/src/model/project.dart
 lib/src/model/project_phase.dart
 lib/src/model/role.dart
