@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:backend_api/backend_api.dart';
 import 'package:fbase_auth_test/app/config/config.dart';
 import 'package:fbase_auth_test/app/core/extension/string.dart';
+import 'package:fbase_auth_test/app/core/extension/widget.dart';
 import 'package:fbase_auth_test/app/core/ui/form/value_accessor/partner_value_accessor.dart';
 import 'package:fbase_auth_test/app/core/ui/form/widget/cancel_button.dart';
 import 'package:fbase_auth_test/app/core/ui/form/widget/pmt_date_time_picker.dart';
@@ -30,26 +31,28 @@ class ProjectDetailForm extends StatelessWidget {
         formGroup: BlocProvider.of<ProjectDetailCubit>(context).state.form!,
         child: Column(
           children: [
-            Row(children: [
-              _nameInput(),
-              SizedBox(width: Config.defaultPadding),
-              _projectStartPicker(),
-              SizedBox(width: Config.defaultPadding),
-              _projectEndPicker(),
-            ]),
-            Row(children: [
-              _partnerSelect(),
-              SizedBox(width: Config.defaultPadding),
-              _phaseSelect(),
-              SizedBox(width: Config.defaultPadding),
-              _settlementModeSelect(),
-            ]),
+            Row(
+              children: [
+                _nameInput(),
+                _projectStartPicker(),
+                _projectEndPicker(),
+              ].withDefaultHorizontalSpaceBetween(),
+            ),
+            Row(
+              children: [
+                _partnerSelect(),
+                _phaseSelect(),
+                _settlementModeSelect(),
+              ].withDefaultHorizontalSpaceBetween(),
+            ),
             SizedBox(height: Config.defaultPadding),
-            Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-              SaveButton(onPressed: () => _submitOnPressed(context)),
-              SizedBox(width: Config.defaultPadding),
-              const CancelButton(),
-            ]),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                SaveButton(onPressed: () => _submitOnPressed(context)),
+                const CancelButton(),
+              ].withDefaultHorizontalSpaceBetween(),
+            ),
           ],
         ),
       ),
@@ -57,7 +60,7 @@ class ProjectDetailForm extends StatelessWidget {
   }
 
   Widget _nameInput() => const PmtTextField(
-      controlName: 'name', text: 'Name', required: true, flexible: true);
+      controlName: 'name', text: 'Name', required: true, flex: 1);
 
   Widget _partnerSelect() {
     return Flexible(
@@ -80,14 +83,14 @@ class ProjectDetailForm extends StatelessWidget {
         controlName: 'projectStart',
         text: 'Project start',
         firstDate: project.projectStart?.toDateTime() ?? DateTime.now(),
-        flexible: true,
+        flex: 1,
       );
 
   Widget _projectEndPicker() => PmtDateTimePicker(
         controlName: 'projectEnd',
         text: 'Project end',
         firstDate: project.projectStart?.toDateTime() ?? DateTime.now(),
-        flexible: true,
+        flex: 1,
       );
 
   Widget _phaseSelect() => PmtDropdownField<PhaseType>(
@@ -95,7 +98,7 @@ class ProjectDetailForm extends StatelessWidget {
         controlName: "phase",
         text: "Phase",
         required: true,
-        flexible: true,
+        flex: 1,
       );
 
   Widget _settlementModeSelect() => PmtDropdownField<SettlementMode>(
@@ -103,7 +106,7 @@ class ProjectDetailForm extends StatelessWidget {
         controlName: "settlementMode",
         text: "Settlement",
         required: true,
-        flexible: true,
+        flex: 1,
       );
 
   void _submitOnPressed(BuildContext context) async {

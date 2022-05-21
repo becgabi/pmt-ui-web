@@ -14,6 +14,7 @@ export 'package:backend_api/src/api/partner_api.dart';
 export 'package:backend_api/src/api/profile_api.dart';
 export 'package:backend_api/src/api/project_api.dart';
 export 'package:backend_api/src/api/project_phase_api.dart';
+export 'package:backend_api/src/api/time_sheet_api.dart';
 
 export 'package:backend_api/src/model/colleague.dart';
 export 'package:backend_api/src/model/colleague_status.dart';
@@ -29,5 +30,7 @@ export 'package:backend_api/src/model/project.dart';
 export 'package:backend_api/src/model/project_phase.dart';
 export 'package:backend_api/src/model/role.dart';
 export 'package:backend_api/src/model/settlement_mode.dart';
+export 'package:backend_api/src/model/time_sheet.dart';
+export 'package:backend_api/src/model/time_sheet_item.dart';
 export 'package:backend_api/src/model/validation_error.dart';
 export 'package:backend_api/src/model/validation_problem.dart';

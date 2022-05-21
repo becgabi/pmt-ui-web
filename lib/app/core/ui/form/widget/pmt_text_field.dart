@@ -12,7 +12,7 @@ class PmtTextField extends PmtField {
       required text,
       this.readOnly,
       required,
-      flexible,
+      flex,
       width,
       this.keyboardType})
       : super(
@@ -20,7 +20,7 @@ class PmtTextField extends PmtField {
             controlName: controlName,
             text: text,
             required: required,
-            flexible: flexible,
+            flex: flex,
             width: width);
 
   @override

@@ -15,14 +15,14 @@ class PmtDropdownField<T extends EnumClass> extends PmtField {
       required text,
       this.readOnly,
       required,
-      flexible,
+      flex,
       width})
       : super(
             key: key,
             controlName: controlName,
             text: text,
             required: required,
-            flexible: flexible,
+            flex: flex,
             width: width);
 
   @override

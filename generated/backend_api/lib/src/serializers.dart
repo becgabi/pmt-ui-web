@@ -26,6 +26,8 @@ import 'package:backend_api/src/model/project.dart';
 import 'package:backend_api/src/model/project_phase.dart';
 import 'package:backend_api/src/model/role.dart';
 import 'package:backend_api/src/model/settlement_mode.dart';
+import 'package:backend_api/src/model/time_sheet.dart';
+import 'package:backend_api/src/model/time_sheet_item.dart';
 import 'package:backend_api/src/model/validation_error.dart';
 import 'package:backend_api/src/model/validation_problem.dart';
 
@@ -46,6 +48,8 @@ part 'serializers.g.dart';
   ProjectPhase,
   Role,
   SettlementMode,
+  TimeSheet,
+  TimeSheetItem,
   ValidationError,
   ValidationProblem,
 ])
