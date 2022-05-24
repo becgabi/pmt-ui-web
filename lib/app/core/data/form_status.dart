@@ -40,6 +40,9 @@ extension FormStatusExtension on FormStatus {
         FormStatus.deleting
       ].contains(this);
 
+  bool inProgressChanged(FormStatus status) =>
+      isInProgress() != status.isInProgress();
+
   void statusChangeListener(BuildContext context) {
     if (this == FormStatus.saved) {
       context.showSavedSnackBar();

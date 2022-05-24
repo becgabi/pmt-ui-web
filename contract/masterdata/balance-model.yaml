@@ -1,0 +1,45 @@
+openapi: "3.0.1"
+info:
+  title: Balance API Components
+  description: Balance API Components
+  version: '1.0'
+paths:
+
+components:
+  schemas:
+    BalanceItem:
+      type: object
+      title: BalanceItem
+      properties:
+        id:
+          $ref: '../common/base-type.yaml#/components/schemas/Id'
+        recorder:
+          $ref: '../masterdata/colleague-model.yaml#/components/schemas/Colleague'
+        creditor:
+          $ref: '../masterdata/colleague-model.yaml#/components/schemas/Colleague'
+        debitor:
+          $ref: '../masterdata/colleague-model.yaml#/components/schemas/Colleague'
+        title:
+          $ref: '../common/base-type.yaml#/components/schemas/ShortText'
+        value:
+          $ref: '../common/base-type.yaml#/components/schemas/Int'
+        comment:
+          $ref: '../common/base-type.yaml#/components/schemas/LongText'
+        status:
+          $ref: '#/components/schemas/BalanceItemStatus'
+        timestamp:
+          $ref: '../common/base-type.yaml#/components/schemas/Date'
+      required:
+        - creditor
+        - debitor
+        - title
+        - value
+
+    BalanceItemStatus:
+      type: string
+      title: BalanceItemStatus
+      description: The status of a BalanceItem
+      enum:
+        - PENDING
+        - APPROVED
+        - REJECTED

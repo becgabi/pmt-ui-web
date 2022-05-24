@@ -32,6 +32,5 @@ class CalendarState extends Equatable {
         error = state.error;
 
   @override
-  List<Object?> get props =>
-      [nonWorkingDays, movedWorkdays, holidays];
+  List<Object?> get props => [nonWorkingDays, movedWorkdays, holidays];
 }

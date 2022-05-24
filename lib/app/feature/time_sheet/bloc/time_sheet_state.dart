@@ -4,10 +4,10 @@ import 'package:fbase_auth_test/app/core/data/form_status.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 class TimeSheetState extends Equatable {
-  final int? colleagueId;
-  final List<Project>? projects;
-  final FormGroup? form;
+  final List<Project> projects;
   final FormStatus status;
+  final int? colleagueId;
+  final FormGroup? form;
 
   const TimeSheetState.initial()
       : colleagueId = null,

@@ -7,6 +7,8 @@ part of 'serializers.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(BalanceItem.serializer)
+      ..add(BalanceItemStatus.serializer)
       ..add(CalendarData.serializer)
       ..add(Colleague.serializer)
       ..add(ColleagueStatus.serializer)

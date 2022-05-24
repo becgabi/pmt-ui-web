@@ -16,6 +16,8 @@ const Permission _$PROJECT_VIEW = const Permission._('PROJECT_VIEW');
 const Permission _$PROJECT_EDIT = const Permission._('PROJECT_EDIT');
 const Permission _$TIME_SHEET_VIEW = const Permission._('TIME_SHEET_VIEW');
 const Permission _$TIME_SHEET_EDIT = const Permission._('TIME_SHEET_EDIT');
+const Permission _$BALANCE_VIEW = const Permission._('BALANCE_VIEW');
+const Permission _$BALANCE_EDIT = const Permission._('BALANCE_EDIT');
 
 Permission _$valueOf(String name) {
   switch (name) {
@@ -39,6 +41,10 @@ Permission _$valueOf(String name) {
       return _$TIME_SHEET_VIEW;
     case 'TIME_SHEET_EDIT':
       return _$TIME_SHEET_EDIT;
+    case 'BALANCE_VIEW':
+      return _$BALANCE_VIEW;
+    case 'BALANCE_EDIT':
+      return _$BALANCE_EDIT;
     default:
       throw new ArgumentError(name);
   }
@@ -56,6 +62,8 @@ final BuiltSet<Permission> _$values =
   _$PROJECT_EDIT,
   _$TIME_SHEET_VIEW,
   _$TIME_SHEET_EDIT,
+  _$BALANCE_VIEW,
+  _$BALANCE_EDIT,
 ]);
 
 class _$PermissionMeta {
@@ -70,6 +78,8 @@ class _$PermissionMeta {
   Permission get PROJECT_EDIT => _$PROJECT_EDIT;
   Permission get TIME_SHEET_VIEW => _$TIME_SHEET_VIEW;
   Permission get TIME_SHEET_EDIT => _$TIME_SHEET_EDIT;
+  Permission get BALANCE_VIEW => _$BALANCE_VIEW;
+  Permission get BALANCE_EDIT => _$BALANCE_EDIT;
   Permission valueOf(String name) => _$valueOf(name);
   BuiltSet<Permission> get values => _$values;
 }
@@ -93,6 +103,8 @@ class _$PermissionSerializer implements PrimitiveSerializer<Permission> {
     'PROJECT_EDIT': 'PROJECT_EDIT',
     'TIME_SHEET_VIEW': 'TIME_SHEET_VIEW',
     'TIME_SHEET_EDIT': 'TIME_SHEET_EDIT',
+    'BALANCE_VIEW': 'BALANCE_VIEW',
+    'BALANCE_EDIT': 'BALANCE_EDIT',
   };
   static const Map<Object, String> _fromWire = const <Object, String>{
     'SETTING_VIEW': 'SETTING_VIEW',
@@ -105,6 +117,8 @@ class _$PermissionSerializer implements PrimitiveSerializer<Permission> {
     'PROJECT_EDIT': 'PROJECT_EDIT',
     'TIME_SHEET_VIEW': 'TIME_SHEET_VIEW',
     'TIME_SHEET_EDIT': 'TIME_SHEET_EDIT',
+    'BALANCE_VIEW': 'BALANCE_VIEW',
+    'BALANCE_EDIT': 'BALANCE_EDIT',
   };
 
   @override

@@ -3,6 +3,7 @@ README.md
 analysis_options.yaml
 lib/backend_api.dart
 lib/src/api.dart
+lib/src/api/balance_api.dart
 lib/src/api/calendar_api.dart
 lib/src/api/colleague_api.dart
 lib/src/api/partner_api.dart
@@ -16,6 +17,8 @@ lib/src/auth/basic_auth.dart
 lib/src/auth/bearer_auth.dart
 lib/src/auth/oauth.dart
 lib/src/date_serializer.dart
+lib/src/model/balance_item.dart
+lib/src/model/balance_item_status.dart
 lib/src/model/calendar_data.dart
 lib/src/model/colleague.dart
 lib/src/model/colleague_status.dart

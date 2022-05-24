@@ -71,6 +71,20 @@ paths:
   '/api/calendar/officeEmployeeCapacity':
     $ref: 'masterdata/calendar-api.yaml#/office-employee-capacity'
 
+  #
+  # Balance API
+  #
+  '/api/balances':
+    $ref: 'masterdata/balance-api.yaml#/balances'
+  '/api/balances/{id}':
+    $ref: 'masterdata/balance-api.yaml#/balance'
+  '/api/balances/filter':
+    $ref: 'masterdata/balance-api.yaml#/balances-filtered'
+  '/api/balances/{id}/approve':
+    $ref: 'masterdata/balance-api.yaml#/balance-approve'
+  '/api/balances/{id}/reject':
+    $ref: 'masterdata/balance-api.yaml#/balance-reject'
+
 components:
   securitySchemes:
     bearerAuth: # arbitrary name for the security scheme
@@ -93,3 +107,5 @@ components:
         - PROJECT_EDIT
         - TIME_SHEET_VIEW
         - TIME_SHEET_EDIT
+        - BALANCE_VIEW
+        - BALANCE_EDIT
