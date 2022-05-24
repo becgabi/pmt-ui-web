@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:fbase_auth_test/app/config/config.dart';
 import 'package:fbase_auth_test/app/core/auth/bloc/auth_bloc.dart';
 import 'package:fbase_auth_test/app/core/http/interceptor/jwt_auth_interceptor.dart';
+import 'package:fbase_auth_test/app/feature/balance/repository/balance_repository.dart';
 import 'package:fbase_auth_test/app/feature/calendar/repository/calendar_repository.dart';
 import 'package:fbase_auth_test/app/feature/colleague/repository/colleague_repository.dart';
 import 'package:fbase_auth_test/app/feature/partner/repository/partner_repository.dart';
@@ -110,6 +111,11 @@ class Application extends StatelessWidget {
             create: (context) => PartnerRepository(
                 Provider.of<BackendApi>(context, listen: false)
                     .getPartnerApi()),
+            lazy: false),
+        RepositoryProvider(
+            create: (context) => BalanceRepository(
+                Provider.of<BackendApi>(context, listen: false)
+                    .getBalanceApi()),
             lazy: false),
         RepositoryProvider(
             create: (context) => CalendarRepository(

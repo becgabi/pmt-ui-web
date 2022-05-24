@@ -28,9 +28,9 @@ class TimeSheetItemList extends StatelessWidget {
                       children: [
                         ListView.builder(
                           shrinkWrap: true,
-                          itemCount: state.projects!.length,
+                          itemCount: state.projects.length,
                           itemBuilder: (context, index) {
-                            final project = state.projects![index];
+                            final project = state.projects[index];
                             return ReactiveFormArray(
                               formArrayName: 'timeSheetItems',
                               builder: (context, formArray, child) => Row(

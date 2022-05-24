@@ -39,7 +39,7 @@ class TimeSheetCubit extends Cubit<TimeSheetState> {
   void initForm(Date selectedDate) async {
     final original = state;
     final colleagueId = state.colleagueId!;
-    final projects = state.projects!;
+    final projects = state.projects;
     emit(TimeSheetState.timeSheetLoading(colleagueId, projects));
     try {
       var timeSheet = await repository.find(colleagueId, selectedDate);

@@ -9,6 +9,7 @@ export 'package:backend_api/src/auth/oauth.dart';
 export 'package:backend_api/src/serializers.dart';
 export 'package:backend_api/src/model/date.dart';
 
+export 'package:backend_api/src/api/balance_api.dart';
 export 'package:backend_api/src/api/calendar_api.dart';
 export 'package:backend_api/src/api/colleague_api.dart';
 export 'package:backend_api/src/api/partner_api.dart';
@@ -16,6 +17,8 @@ export 'package:backend_api/src/api/project_api.dart';
 export 'package:backend_api/src/api/project_phase_api.dart';
 export 'package:backend_api/src/api/time_sheet_api.dart';
 
+export 'package:backend_api/src/model/balance_item.dart';
+export 'package:backend_api/src/model/balance_item_status.dart';
 export 'package:backend_api/src/model/calendar_data.dart';
 export 'package:backend_api/src/model/colleague.dart';
 export 'package:backend_api/src/model/colleague_status.dart';

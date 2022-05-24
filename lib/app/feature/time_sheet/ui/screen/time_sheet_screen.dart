@@ -35,7 +35,7 @@ class TimeSheetScreen extends StatelessWidget {
         listener: (context, state) =>
             state.status.statusChangeListener(context),
         buildWhen: (previous, current) =>
-            previous.status.isInProgress() != current.status.isInProgress(),
+            previous.status.inProgressChanged(current.status),
         builder: (_, state) => PmtScaffold(
           body: state.status.isInProgress()
               ? const PmtProgressIndicator()

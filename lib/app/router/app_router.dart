@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:fbase_auth_test/app/core/auth/ui/sign_in_screen.dart';
+import 'package:fbase_auth_test/app/feature/balance/ui/screen/balance_screen.dart';
 import 'package:fbase_auth_test/app/feature/calendar/ui/calendar_screen.dart';
 import 'package:fbase_auth_test/app/feature/colleague/ui/screen/colleague_screen.dart';
 import 'package:fbase_auth_test/app/feature/files/ui/dashboard_screen.dart';
@@ -32,6 +33,10 @@ import 'package:fbase_auth_test/app/router/guards/authorization_guard.dart';
     AutoRoute(
         path: TimeSheetScreen.route,
         page: TimeSheetScreen,
+        guards: [AuthenticationGuard, AuthorizationGuard]),
+    AutoRoute(
+        path: BalanceScreen.route,
+        page: BalanceScreen,
         guards: [AuthenticationGuard, AuthorizationGuard]),
     AutoRoute(path: '*', page: DashboardScreen, guards: [AuthenticationGuard]),
   ],

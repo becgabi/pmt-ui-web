@@ -30,6 +30,10 @@ class Permission extends EnumClass {
   static const Permission TIME_SHEET_VIEW = _$TIME_SHEET_VIEW;
   @BuiltValueEnumConst(wireName: r'TIME_SHEET_EDIT')
   static const Permission TIME_SHEET_EDIT = _$TIME_SHEET_EDIT;
+  @BuiltValueEnumConst(wireName: r'BALANCE_VIEW')
+  static const Permission BALANCE_VIEW = _$BALANCE_VIEW;
+  @BuiltValueEnumConst(wireName: r'BALANCE_EDIT')
+  static const Permission BALANCE_EDIT = _$BALANCE_EDIT;
 
   static Serializer<Permission> get serializer => _$permissionSerializer;
 

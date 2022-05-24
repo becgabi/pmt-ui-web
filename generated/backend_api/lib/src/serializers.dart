@@ -12,6 +12,8 @@ import 'package:built_value/iso_8601_date_time_serializer.dart';
 import 'package:backend_api/src/date_serializer.dart';
 import 'package:backend_api/src/model/date.dart';
 
+import 'package:backend_api/src/model/balance_item.dart';
+import 'package:backend_api/src/model/balance_item_status.dart';
 import 'package:backend_api/src/model/calendar_data.dart';
 import 'package:backend_api/src/model/colleague.dart';
 import 'package:backend_api/src/model/colleague_status.dart';
@@ -34,6 +36,8 @@ import 'package:backend_api/src/model/validation_problem.dart';
 part 'serializers.g.dart';
 
 @SerializersFor([
+  BalanceItem,
+  BalanceItemStatus,
   CalendarData,
   Colleague,
   ColleagueStatus,
@@ -54,6 +58,10 @@ part 'serializers.g.dart';
   ValidationProblem,
 ])
 Serializers serializers = (_$serializers.toBuilder()
+      ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(BalanceItem)]),
+        () => ListBuilder<BalanceItem>(),
+      )
       ..addBuilderFactory(
         const FullType(BuiltList, [FullType(String)]),
         () => ListBuilder<String>(),

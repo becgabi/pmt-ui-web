@@ -46,14 +46,13 @@ Please follow the [installation procedure](#installation--usage) and then run th
 import 'package:backend_api/backend_api.dart';
 
 
-final api = BackendApi().getCalendarApi();
-final int year = 56; // int | Year path parameter
+final api = BackendApi().getBalanceApi();
+final int id = 789; // int | Identifier path parameter
 
 try {
-    final response = await api.getAbsences(year);
-    print(response);
+    api.approve(id);
 } catch on DioError (e) {
-    print("Exception when calling CalendarApi->getAbsences: $e\n");
+    print("Exception when calling BalanceApi->approve: $e\n");
 }
 
 ```
@@ -64,6 +63,14 @@ All URIs are relative to *http://localhost:9001*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+[*BalanceApi*](doc/BalanceApi.md) | [**approve**](doc/BalanceApi.md#approve) | **PUT** /api/balances/{id}/approve | Marks a BalanceItem as approved
+[*BalanceApi*](doc/BalanceApi.md) | [**create**](doc/BalanceApi.md#create) | **POST** /api/balances | Create a new BalanceItem
+[*BalanceApi*](doc/BalanceApi.md) | [**delete**](doc/BalanceApi.md#delete) | **DELETE** /api/balances/{id} | Delete a BalanceItem
+[*BalanceApi*](doc/BalanceApi.md) | [**getAll**](doc/BalanceApi.md#getall) | **GET** /api/balances | Get all BalanceItems
+[*BalanceApi*](doc/BalanceApi.md) | [**getAllFiltered**](doc/BalanceApi.md#getallfiltered) | **GET** /api/balances/filter | Get all BalanceItems that are relevant to a Colleague
+[*BalanceApi*](doc/BalanceApi.md) | [**getOne**](doc/BalanceApi.md#getone) | **GET** /api/balances/{id} | Get a single BalanceItem
+[*BalanceApi*](doc/BalanceApi.md) | [**reject**](doc/BalanceApi.md#reject) | **PUT** /api/balances/{id}/reject | Marks a BalanceItem as rejected
+[*BalanceApi*](doc/BalanceApi.md) | [**update**](doc/BalanceApi.md#update) | **PUT** /api/balances/{id} | Update a BalanceItem
 [*CalendarApi*](doc/CalendarApi.md) | [**getAbsences**](doc/CalendarApi.md#getabsences) | **GET** /api/calendar/absences/{year} | Get monthly absences
 [*CalendarApi*](doc/CalendarApi.md) | [**getCalendarData**](doc/CalendarApi.md#getcalendardata) | **GET** /api/calendar/data/{year} | Get non-working days and moved workdays of a year
 [*CalendarApi*](doc/CalendarApi.md) | [**getOfficeDays**](doc/CalendarApi.md#getofficedays) | **GET** /api/calendar/officedays/{year}/{month} | Get monthly colleague presence in office
@@ -100,6 +107,8 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [BalanceItem](doc/BalanceItem.md)
+ - [BalanceItemStatus](doc/BalanceItemStatus.md)
  - [CalendarData](doc/CalendarData.md)
  - [Colleague](doc/Colleague.md)
  - [ColleagueStatus](doc/ColleagueStatus.md)

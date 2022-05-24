@@ -1,14 +1,23 @@
 import 'package:backend_api/backend_api.dart';
+import 'package:fbase_auth_test/app/feature/colleague/repository/colleague_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../config/config.dart';
 import '../../../../core/ui/widget/rounded_box.dart';
-import '../../bloc/colleague_details_cubit.dart';
 import '../../bloc/colleague_selector_cubit.dart';
 
 class ColleagueFilter extends StatefulWidget {
-  const ColleagueFilter({Key? key}) : super(key: key);
+  final void Function(BuildContext context, Colleague selected) onChanged;
+  final bool filterCurrentColleague;
+  final void Function(BuildContext context)? newPress;
+
+  const ColleagueFilter(
+      {Key? key,
+      required this.onChanged,
+      this.newPress,
+      this.filterCurrentColleague = false})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() => ColleagueFilterState();
@@ -19,20 +28,27 @@ class ColleagueFilterState extends State<ColleagueFilter> {
 
   @override
   Widget build(BuildContext context) {
-    return RoundedBox(
-      child: Center(
-        child: Row(
-          children: [
-            _userSelector(context),
-            SizedBox(width: Config.defaultPadding),
-            ElevatedButton(
-              onPressed: () async {
-                setState(() => selectedColleagueId = null);
-                context.read<ColleagueDetailsCubit>().loadNew();
-              },
-              child: const Text("New"),
-            )
-          ],
+    return BlocProvider(
+      create: (context) => ColleagueSelectorCubit(
+          repository: RepositoryProvider.of<ColleagueRepository>(context))
+        ..init(widget.filterCurrentColleague),
+      child: RoundedBox(
+        child: Center(
+          child: Row(
+            children: [
+              _userSelector(context),
+              if (widget.newPress != null)
+                SizedBox(width: Config.defaultPadding),
+              if (widget.newPress != null)
+                ElevatedButton(
+                  onPressed: () async {
+                    setState(() => selectedColleagueId = null);
+                    widget.newPress!(context);
+                  },
+                  child: const Text("New"),
+                )
+            ],
+          ),
         ),
       ),
     );
@@ -50,7 +66,7 @@ class ColleagueFilterState extends State<ColleagueFilter> {
               onChanged: (value) {
                 setState(() => selectedColleagueId = value);
                 final selected = state.result.firstWhere((c) => c.id == value);
-                context.read<ColleagueDetailsCubit>().loadData(selected);
+                widget.onChanged(context, selected);
               });
         } else {
           return DropdownButton<int>(

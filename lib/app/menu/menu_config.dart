@@ -1,4 +1,5 @@
 import 'package:fbase_auth_test/app/core/auth/config/permission_config.dart';
+import 'package:fbase_auth_test/app/feature/balance/ui/screen/balance_screen.dart';
 import 'package:fbase_auth_test/app/feature/calendar/ui/calendar_screen.dart';
 import 'package:fbase_auth_test/app/feature/colleague/ui/screen/colleague_screen.dart';
 import 'package:fbase_auth_test/app/feature/files/ui/dashboard_screen.dart';
@@ -35,5 +36,11 @@ List<MenuItem> fixedMenuItems = [
     title: TimeSheetScreen.title,
     icon: 'assets/icons/menu_task.svg',
     permissions: routePermissions[TimeSheetRoute.name]!,
+  ),
+  MenuItem(
+    route: const BalanceRoute(),
+    title: BalanceScreen.title,
+    icon: 'assets/icons/menu_tran.svg',
+    permissions: routePermissions[BalanceRoute.name]!,
   ),
 ];

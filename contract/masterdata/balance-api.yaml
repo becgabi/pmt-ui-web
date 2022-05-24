@@ -1,0 +1,144 @@
+balances:
+  get:
+    summary: Get all BalanceItems
+    operationId: getAll
+    responses:
+      '200':
+        description: Operation successful
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '../masterdata/balance-model.yaml#/components/schemas/BalanceItem'
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+    tags:
+      - balance
+  post:
+    summary: Create a new BalanceItem
+    operationId: create
+    requestBody:
+      description: BalanceItem
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../masterdata/balance-model.yaml#/components/schemas/BalanceItem'
+    responses:
+      '201':
+        description: Success
+        content:
+          application/json:
+            schema:
+              $ref: '../common/common.yaml#/components/schemas/IdentifierResponse'
+      '400': { $ref: '../common/response.yaml#/components/responses/BadRequest' }
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+      '422': { $ref: '../common/response.yaml#/components/responses/Unprocessable' }
+    tags:
+      - balance
+
+balances-filtered:
+  get:
+    summary: Get all BalanceItems that are relevant to a Colleague
+    operationId: getAllFiltered
+    responses:
+      '200':
+        description: Operation succesful
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '../masterdata/balance-model.yaml#/components/schemas/BalanceItem'
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+      '404': { $ref: '../common/response.yaml#/components/responses/NotFound' }
+    tags:
+      - balance
+
+balance:
+  get:
+    parameters:
+      - $ref: '../common/common.yaml#/components/parameters/idPathParam'
+    summary: Get a single BalanceItem
+    operationId: getOne
+    responses:
+      '200':
+        desciption: Operation successful
+        content:
+          application/json:
+            schema:
+              $ref: '../masterdata/balance-model.yaml#/components/schemas/BalanceItem'
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+      '404': { $ref: '../common/response.yaml#/components/responses/NotFound' }
+    tags:
+      - balance
+  put:
+    parameters:
+      - $ref: '../common/common.yaml#/components/parameters/idPathParam'
+    summary: Update a BalanceItem
+    operationId: update
+    requestBody:
+      description: Balance
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../masterdata/balance-model.yaml#/components/schemas/BalanceItem'
+    responses:
+      '200':
+        description: Operation successful
+      '400': { $ref: '../common/response.yaml#/components/responses/BadRequest' }
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+      '422': { $ref: '../common/response.yaml#/components/responses/Unprocessable' }
+    tags:
+      - balance
+  delete:
+    parameters:
+      - $ref: '../common/common.yaml#/components/parameters/idPathParam'
+    summary: Delete a BalanceItem
+    operationId: delete
+    responses:
+      '204':
+        description: Operation successful
+      '400': { $ref: '../common/response.yaml#/components/responses/BadRequest' }
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+    tags:
+      - balance
+
+balance-approve:
+  put:
+    parameters:
+      - $ref: '../common/common.yaml#/components/parameters/idPathParam'
+    summary: Marks a BalanceItem as approved
+    operationId: approve
+    responses:
+      '200':
+        description: Operation successful
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+      '404': { $ref: '../common/response.yaml#/components/responses/NotFound' }
+      '422': { $ref: '../common/response.yaml#/components/responses/Unprocessable' }
+    tags:
+      - balance
+
+balance-reject:
+  put:
+    parameters:
+      - $ref: '../common/common.yaml#/components/parameters/idPathParam'
+    summary: Marks a BalanceItem as rejected
+    operationId: reject
+    responses:
+      '200':
+        description: Operation successful
+      '401': { $ref: '../common/response.yaml#/components/responses/Unauthorized' }
+      '403': { $ref: '../common/response.yaml#/components/responses/Forbidden' }
+      '404': { $ref: '../common/response.yaml#/components/responses/NotFound' }
+      '422': { $ref: '../common/response.yaml#/components/responses/Unprocessable' }
+    tags:
+      - balance
