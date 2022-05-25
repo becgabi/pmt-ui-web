@@ -103,7 +103,7 @@ class BalanceItemList extends StatelessWidget {
 
   List<Widget> _getDebtList(BuildContext context, BalanceState state) => state
       .debtList
-      .map((e) => _buildBalanceText(context, e, Colors.red, 'Modify Credit'))
+      .map((e) => _buildBalanceText(context, e, Colors.red, 'Modify Debt'))
       .toList();
 
   Center _buildBalanceText(

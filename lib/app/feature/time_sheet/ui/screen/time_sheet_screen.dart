@@ -37,18 +37,18 @@ class TimeSheetScreen extends StatelessWidget {
         buildWhen: (previous, current) =>
             previous.status.inProgressChanged(current.status),
         builder: (_, state) => PmtScaffold(
-          body: state.status.isInProgress()
-              ? const PmtProgressIndicator()
-              : SingleChildScrollView(
-                  controller: ScrollController(),
-                  child: Column(
-                    children: [
-                      const TimeSheetSelector(),
-                      SizedBox(height: Config.defaultPadding),
-                      const TimeSheetItemList(),
-                    ],
-                  ),
-                ),
+          body: SingleChildScrollView(
+            controller: ScrollController(),
+            child: Column(
+              children: [
+                const TimeSheetSelector(),
+                SizedBox(height: Config.defaultPadding),
+                state.status.isInProgress()
+                    ? const PmtProgressIndicator()
+                    : const TimeSheetItemList(),
+              ],
+            ),
+          ),
         ),
       ),
     );
